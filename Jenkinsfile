@@ -1,14 +1,9 @@
-/* Requires the Docker Pipeline plugin */
 pipeline {
-    agent any
+    agent { docker { image 'node:16.17.1-alpine' } }
     stages {
         stage('build') {
             steps {
-               sh 'echo "Hello World"'
-               sh '''
-                echo "Multi line steps also works"
-                ls -lah
-               '''
+                sh 'node --version'
             }
         }
     }
